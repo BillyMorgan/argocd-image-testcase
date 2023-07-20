@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      role: deployment
+  template:
+    metadata:
+      labels:
+        role: deployment
+    spec:
+      containers:
+        - name: test-pod
+          imagePullPolicy: Always
+          image: container-image
+          command: ["tail", "-f", "/dev/null"]
